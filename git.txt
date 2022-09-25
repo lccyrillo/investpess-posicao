@@ -1,0 +1,51 @@
+0) setup de trabalho
+-> entra no diretorio pai
+>> git clone https://github.com/lccyrillo/investpess-negociacao.git
+>> entra no diretorio do projeto
+>> git config --global user.email "lccyrillo@gmail.com"
+-> renomei no github a branch main para master
+-> Verificar a branch que estou
+>> git branch (vejo que estou na main)
+>> git checkout -b master
+>> git checkout -b developer
+>> git checkout -b release_setup
+-> apago a branch main
+>> git branch -D main
+-> Se precisar apagar no github
+>> git push origin --delete refatoracao_conexao
+>> aponto a origem para o repositorio correto
+
+
+0) Crio no github um novo repositório e copio o endereco
+-> entra no diretorio pai
+>> git clone https://github.com/lccyrillo/investpess-negociacao.git
+
+1) setup de trabalho
+-> entra no diretorio do projeto, pasta específica
+>> git config --global user.email "lccyrillo@gmail.com"
+>> git init
+
+2) Vou na web no git hub e crio uma nova branch para developer
+-> Clica no repositorio
+-> Clica na branch main, vai ter um campo aberto para find or create
+-> Digita: developer e enter
+-> Cria a primeira branch de setup da aplicacao
+-> Digita: setup e enter
+
+3) Acertando o ambiente de trabalho para conseguir 
+1)  Crio uma branch local de nome develope
+>> git checkout -b setup
+>> git push --set-upstream origin setup
+
+** Everything up-to-date
+** branch 'setup' set up to track 'origin/setup'.
+
+
+>> git remote add origin https://github.com/lccyrillo/investpess-posicao.git
+
+1) Forma geral de trabalho
+--> Verificar a branch que estou
+--> devo trabalhar na branch da release
+>> git branch
+--> se não estou na branch correta, vou para a branch correta
+>> git checkout testes_unitarios
