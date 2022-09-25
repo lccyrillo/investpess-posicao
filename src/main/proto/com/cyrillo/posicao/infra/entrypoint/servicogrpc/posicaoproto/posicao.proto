@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package posicaoproto;
+option java_package = "com.cyrillo.posicao.infra.entrypoint.servicogrpc.posicaoproto";
+option java_multiple_files = true;
+
+import "google/protobuf/timestamp.proto";
+
+message IdentificacaoNegocio {
+  string identificador_negocio = 1;
+  string corretora_negocio = 2;
+  string identificacao_cliente_negocio = 3;
+  google.protobuf.Timestamp data_negocio = 4;
+}
+
+message MovimentoAtivo {
+  string sigla_ativo = 1;
+  int32 tipo_movimento = 2;  // 1 - compra , 2 venda
+  int32 tipo_ativo = 3;  // 1 - açõo , 2 opção, 3 fii
+  double quantidade_negociada = 4;
+  double preco_medio_com_custos = 5;
+}
+
+message RegistraMovimentoRequest {
+  string flow_id = 1;
+  IdentificacaoNegocio identificacao_negocio = 2;
+  repeated MovimentoAtivo ativos_movimentados = 3;
+}
+
+message RegistraMovimentoResponse {
+  int32 response_code = 1;
+  string response_message = 2;
+  int32 chave_identificadora = 3;
+}
+
+service MovimentoService {
+  //unary
+  rpc RegistraMovimento(RegistraMovimentoRequest) returns (RegistraMovimentoResponse) {};
+}
