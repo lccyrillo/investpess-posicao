@@ -27,3 +27,5 @@ gradle
 gradlew/*
 materiais
 materiais/*
+build
+build/*
