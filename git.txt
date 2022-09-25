@@ -40,6 +40,8 @@
 ** Everything up-to-date
 ** branch 'setup' set up to track 'origin/setup'.
 
+--------------------------------------------------------------------------------------------------------------
+
 
 >> git remote add origin https://github.com/lccyrillo/investpess-posicao.git
 
