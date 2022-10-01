@@ -2,6 +2,7 @@ package com.cyrillo.posicao.infra.facade;
 
 import com.cyrillo.posicao.core.dataprovider.tipo.DataProviderInterface;
 import com.cyrillo.posicao.core.dataprovider.tipo.LogInterface;
+import com.cyrillo.posicao.core.usecase.ExecutarAlgumaAcaoUseCase;
 import com.cyrillo.posicao.core.usecase.excecao.*;
 
 public class FacadeAplicacao {
@@ -14,6 +15,6 @@ public class FacadeAplicacao {
         String sessionId = data.getSessionId();
         log.logInfo(flowId,sessionId,"Iniciando Facade Registrar Negociação");
         //log.logInfo(flowId,sessionId,negociacaoDto.toString());
-        //new ExecutarAlgumaAcaoUseCase().executar(data,flowId,negociacaoDto);
+        new ExecutarAlgumaAcaoUseCase().executar(data);
     }
 }
