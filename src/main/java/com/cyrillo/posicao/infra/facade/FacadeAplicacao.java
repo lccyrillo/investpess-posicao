@@ -4,8 +4,8 @@ import com.cyrillo.posicao.core.dataprovider.tipo.DataProviderInterface;
 import com.cyrillo.posicao.core.dataprovider.tipo.LogInterface;
 import com.cyrillo.posicao.core.usecase.excecao.*;
 
-public class FacadeNegociacao {
-    public FacadeNegociacao(){
+public class FacadeAplicacao {
+    public FacadeAplicacao(){
     }
     public void executarAlgumaCoisa(DataProviderInterface data) throws ComunicacaoRepoUseCaseExcecao, ParametrosInvalidosUseCaseExcecao {
 

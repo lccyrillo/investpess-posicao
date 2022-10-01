@@ -32,11 +32,11 @@ public class ServidorGRPC {
         try {
 
             List<ServerServiceDefinition> lista = new ArrayList<>();
-           // NegociacaoService negociacaoService = new NegociacaoService(this.data);
+            ServicoAplicacaoService servicoAplicacaoService = new ServicoAplicacaoService(this.data);
             HealthCheckService healthCheckService = new HealthCheckService();
 
 
-            //lista.add(negociacaoService.bindService());
+            lista.add(servicoAplicacaoService.bindService());
             lista.add(healthCheckService.bindService());
             Server server = ServerBuilder.forPort(50051)
                     .addServices(lista)
