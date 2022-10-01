@@ -5,13 +5,17 @@ import com.cyrillo.posicao.core.dataprovider.tipo.LogInterface;
 
 // Avaliar melhor as importacoes. O Entry poiny não deveria referenciar frameworks externos.
 import com.cyrillo.posicao.infra.config.Aplicacao;
-import io.grpc.Server;
-import io.grpc.ServerBuilder;
-import io.grpc.ServerMethodDefinition;
-import io.grpc.ServerServiceDefinition;
+import io.grpc.*;
+import io.micrometer.core.instrument.*;
+import io.micrometer.core.instrument.binder.grpc.MetricCollectingServerInterceptor;
+import io.micrometer.core.instrument.distribution.DistributionStatisticConfig;
+import io.micrometer.core.instrument.distribution.pause.PauseDetector;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.function.ToDoubleFunction;
+import java.util.function.ToLongFunction;
 
 
 public class ServidorGRPC {
@@ -31,13 +35,38 @@ public class ServidorGRPC {
 
         try {
 
+            //CollectorRegistry collectorRegistry = new CollectorRegistry().register(new Collector() );
+            //MonitoringServerInterceptor monitoringInterceptor = MonitoringServerInterceptor.create(Configuration.cheapMetricsOnly());
+
+            //grpcServer = ServerBuilder.forPort(GRPC_PORT)
+            //        .addService(ServerInterceptors.intercept(
+            //                HelloServiceGrpc.bindService(new HelloServiceImpl()), monitoringInterceptor))
+            //        .build();
+
+
+
             List<ServerServiceDefinition> lista = new ArrayList<>();
             ServicoAplicacaoService servicoAplicacaoService = new ServicoAplicacaoService(this.data);
             HealthCheckService healthCheckService = new HealthCheckService();
 
+            //MeterRegistry meterRegistry = new MeterRegistry();
 
+            //MetricCollectingServerInterceptor metricCollectingServerInterceptor = new MetricCollectingServerInterceptor(meterRegistry);
+
+            // com prometheus
+            //Server server = ServerBuilder.forPort(8080)
+            //        .intercept(new MetricCollectingServerInterceptor(meterRegistry))
+            //        .build();
+
+
+
+            //lista.add(ServerInterceptors.intercept(servicoAplicacaoService.bindService(),monitoringInterceptor));
+            //lista.add(ServerInterceptors.intercept(healthCheckService.bindService(),monitoringInterceptor));
+
+            // sem prometheus
             lista.add(servicoAplicacaoService.bindService());
             lista.add(healthCheckService.bindService());
+
             Server server = ServerBuilder.forPort(50051)
                     .addServices(lista)
                     .build()
